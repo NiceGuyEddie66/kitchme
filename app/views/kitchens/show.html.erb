@@ -5,7 +5,7 @@
       <div class="kitchen-booking-card">
         <h3><%= @kitchen.name %></h3>
         <% @kitchen.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill%>
+          <%= cl_image_tag photo.key, crop: :fill%>
         <% end %>
       </div>
       <div class="kitchen-booking-card">
@@ -14,7 +14,11 @@
       <p>Capacity : <%= @kitchen.capacity %></p>
       <p>Price/day : <%= @kitchen.price %></p>
       <p>Equipments : <%= @kitchen.equipment %></p>
-      <img src="https://images.frandroid.com/wp-content/uploads/2016/01/google-maps.png" width="100%" height="400" alt="">
+      <div style="width: 100%; height: 400px;"
+          data-controller="map"
+          data-map-markers-value="<%= @marker.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
       </div>
     </div>
     <div class="col-4">
